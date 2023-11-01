@@ -8,21 +8,20 @@ fn main() {
     let mut end = 0;
     let mut id = 0;
     let mut score = 0.0;
+    let check_asm_str = format!("{}.", asm);
     for line in io::stdin().lines() {
         let s = line.unwrap();
         if s.starts_with("s") {
             let r: Vec<&str> = s.split_ascii_whitespace().collect();
-            let pref = format!("{}.", asm);
-            if r[1].starts_with(&pref) {
-                let stripped = r[1].strip_prefix(&pref);
-                chr = stripped.unwrap().to_string();
+            if let Some(stripped) = r[1].strip_prefix(&check_asm_str) {
+                chr = stripped.to_string();
                 start = r[2].parse::<i32>().unwrap();
                 let len = r[3].parse::<i32>().unwrap();
                 end = start + len;
             }
             b.push(r[1..].join(":"))
-        } else if s.starts_with("a") {
-            score = s.strip_prefix("a score=").unwrap().parse::<f32>().unwrap();
+        } else if let Some(s) = s.strip_prefix("a score=") {
+            score = s.parse::<f32>().unwrap();
             if id > 0 {
                 println!(
                     "{}\t{}\t{}\t{}_{}\t{}\t{}",
