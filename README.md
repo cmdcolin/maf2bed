@@ -10,9 +10,15 @@ Make sure to specify the 'assembly name' being used as the reference for the bed
 file as the first argument to maf2bed
 
 ```
-zcat file.maf.gz | maf2bed assembly_name | bgzip -@8 > file.bed.gz
+#non parallel compression/decompression
+zcat file.maf.gz | maf2bed assembly_name | bgzip > file.bed.gz
+#parallel compression/decompression
+pigz -dc file.maf.gz | maf2bed assembly_name | bgzip -@8 > file.bed.gz
+
 tabix file.bed.gz
 ```
+
+Might also need a sort -k1,1 -k2,2n in some cases on the bed file before bgzip/tabix
 
 ## Footnote
 
