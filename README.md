@@ -10,9 +10,8 @@ Make sure to specify the 'assembly name' being used as the reference for the bed
 file as the first argument to maf2bed
 
 ```
-zcat file.maf.gz | maf2bed assembly_name > file.bed
-bgzip file.bed
-tabix file.bed
+zcat file.maf.gz | maf2bed assembly_name | bgzip -@8 > file.bed.gz
+tabix file.bed.gz
 ```
 
 ## Footnote
