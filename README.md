@@ -18,7 +18,7 @@ tabix file.bed
 ## Footnote
 
 Converted to rust from perl as a coding exercise mostly, gaining a modest
-speedup on the way
+speedup on the way https://twitter.com/cmdcolin/status/1719608993310486883
 
 ## Motivation
 
