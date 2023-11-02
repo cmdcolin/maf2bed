@@ -31,4 +31,4 @@ I wanted to try using the bigMaf (bigBed based) format ecosystem with large MAF
 files but bedToBigBed doesn't support streaming or reading compressed files(?),
 so that requires reading big files on disk and in memory. in contrast, MAF tabix
 type approach like implemented here can be compressed and streaming which allows
-much low memory usage and disk space
+much lower memory usage and disk space
