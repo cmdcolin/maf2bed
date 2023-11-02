@@ -4,6 +4,13 @@ Used to convert multiple alignment format (MAF) files to a bed tabix-y style
 format. Used in jbrowse mafviewer plugin
 https://github.com/cmdcolin/jbrowse-plugin-mafviewer
 
+## Install
+
+```
+cargo install maf2bed
+maf2bed --help
+```
+
 ## Usage
 
 Make sure to specify the 'assembly name' being used as the reference for the bed
@@ -18,7 +25,8 @@ pigz -dc file.maf.gz | maf2bed assembly_name | bgzip -@8 > file.bed.gz
 tabix file.bed.gz
 ```
 
-Might also need a sort -k1,1 -k2,2n in some cases on the bed file before bgzip/tabix
+Might also need a sort -k1,1 -k2,2n in some cases on the bed file before
+bgzip/tabix
 
 ## Footnote
 

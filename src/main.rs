@@ -1,7 +1,23 @@
-use std::{env, io};
+use std::{env, io, process::exit};
+
+fn print_usage() {
+    println!("maf2bed v0.2.0");
+    println!("Usage: zcat file.maf.gz | maf2bed hg38 | bgzip > out.bed.gz");
+    println!(
+        "where e.g. hg38 is the name of which ever genome that you want to use as the reference for the BED file (all data lines with hg38.chr1 will turn into a chr1 line in the BED file)"
+    );
+    exit(0)
+}
 fn main() {
     let args: Vec<String> = env::args().collect();
+    if args.len() == 1 {
+        print_usage()
+    }
+
     let asm = &args[1];
+    if asm.eq("--help") {
+        print_usage()
+    }
     let mut chr = "".to_string();
     let mut b = Vec::new();
     let mut start = 0;
