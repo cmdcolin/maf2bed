@@ -1,6 +1,6 @@
 [package]
 name = "maf2bed"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 description = "Converts multiple alignment format (MAF) files to a BED format for tabixing. Used with jbrowse-plugin-mafviewer"
 license = "MIT"

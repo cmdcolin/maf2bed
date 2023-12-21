@@ -1,7 +1,7 @@
 use std::{env, io, process::exit};
 
 fn print_usage() {
-    println!("maf2bed v0.2.0");
+    println!("maf2bed v0.3.0");
     println!("Usage: zcat file.maf.gz | maf2bed hg38 | bgzip > out.bed.gz");
     println!(
         "where e.g. hg38 is the name of which ever genome that you want to use as the reference for the BED file (all data lines with hg38.chr1 will turn into a chr1 line in the BED file)"
@@ -36,8 +36,10 @@ fn main() {
                 end = start + len;
             }
             b.push(r[1..].join(":"))
-        } else if let Some(s) = s.strip_prefix("a score=") {
-            score = s.parse::<f32>().unwrap();
+        } else if s.starts_with("a") {
+            if let Some(s) = s.strip_prefix("a score=") {
+                score = s.parse::<f32>().unwrap();
+            }
             if id > 0 {
                 println!(
                     "{}\t{}\t{}\t{}_{}\t{}\t{}",
