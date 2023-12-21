@@ -1,8 +1,8 @@
 use std::{env, io, process::exit};
 
 fn print_usage() {
-    println!("maf2bed v0.3.0");
-    println!("Usage: zcat file.maf.gz | maf2bed hg38 | bgzip > out.bed.gz");
+    println!("maf2bed v0.4.0");
+    println!("Usage: zcat file.maf.gz | maf2bed hg38 | sort -k1,1 -k2,2n | bgzip > out.bed.gz");
     println!(
         "where e.g. hg38 is the name of which ever genome that you want to use as the reference for the BED file (all data lines with hg38.chr1 will turn into a chr1 line in the BED file)"
     );
