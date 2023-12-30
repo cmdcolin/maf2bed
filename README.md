@@ -16,12 +16,13 @@ maf2bed --help
 Make sure to specify the 'assembly name' being used as the reference for the
 bed file as the first argument to maf2bed
 
+Example
+
 ```
 export LC_ALL=c # improves sorting speed
-#non parallel compression/decompression
-zcat file.maf.gz | maf2bed assembly_name | | sort -k1,1 -k2,2n | bgzip > file.bed.gz
+
 #parallel compression/decompression
-pigz -dc file.maf.gz | maf2bed assembly_name | sort -k1,1 -k2,2n | bgzip -@8 > file.bed.gz
+pigz -dc file.maf.gz | maf2bed hg19 | sort -k1,1 -k2,2n | bgzip -@8 > file.bed.gz
 
 tabix file.bed.gz
 ```
