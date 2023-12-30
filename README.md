@@ -30,11 +30,20 @@ tabix file.bed.gz
 Might be able to remove the sort/LC_ALL=c in some cases, but sorting ensures
 that it will be ready for tabix
 
-## Footnote
+## Footnote 1
 
 Converted to rust from perl as a coding exercise mostly, gaining a modest
 speedup on the way https://twitter.com/cmdcolin/status/1719608993310486883
 
+## Footnote 2
+
+There are likely many ways to end up with a MAF file, but one way is to export the MAF from a pangenome graph
+
+This page discusses some examples
+
+https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/progressive.md#using-the-hal-output
+
+using "--dupeMode all" is, afaik, recommended for the purposes of the JBrowse 2 mafviewer plugin, because using "--dupeMode single" can cause missing blocks of data
 ## Motivation
 
 I wanted to try using the bigMaf (bigBed based) format ecosystem with large MAF
